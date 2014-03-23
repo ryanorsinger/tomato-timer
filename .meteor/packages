@@ -23,3 +23,5 @@ ecmascript
 
 sanjo:jasmine
 velocity:html-reporter
+accounts-ui
+accounts-password
