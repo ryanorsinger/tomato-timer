@@ -20,3 +20,6 @@ ejson
 spacebars
 check
 ecmascript
+
+sanjo:jasmine
+velocity:html-reporter
