@@ -14,7 +14,7 @@ Template.pomodorosList.events({
       goal: e.target.goal.value,
     };
 
-    Pomodoros.insert(pomodoro);
+    Meteor.call('createPomodoro', pomodoro);
   },
   'click .delete' : function (e) {
     Pomodoros.remove(this._id);
