@@ -1,5 +1,6 @@
 describe('Tasks', function () {
   describe('adding a pomodoro', function () {
+
     beforeEach(function (done) {
       var userData = {
         email: "davey@example.com",

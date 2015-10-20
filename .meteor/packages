@@ -23,3 +23,5 @@ sanjo:jasmine
 velocity:html-reporter
 accounts-ui
 accounts-password
+kadira:flow-router
+kadira:blaze-layout
