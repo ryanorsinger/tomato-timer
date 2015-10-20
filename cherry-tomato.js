@@ -16,6 +16,12 @@ if (Meteor.isClient) {
       Session.set("counter", Session.get("counter") + 1);
     }
   });
+
+  Template.pomodorosList.helpers({
+    allPomodoros: function () {
+      return Pomodoros.find({}, {sort: {startDate: -1}});
+    }
+  });
 }
 
 if (Meteor.isServer) {
