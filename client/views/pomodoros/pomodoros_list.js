@@ -1,6 +1,6 @@
 Template.pomodorosList.helpers({
   allPomodoros: function () {
-    return Pomodoros.find({}, {sort: {startDate: -1}});
+    return Pomodoros.find({userId: Meteor.userId()}, {sort: {startDate: -1}});
   }
 });
 
@@ -9,6 +9,7 @@ Template.pomodorosList.events({
     e.preventDefault();
 
     var pomodoro = {
+      userId: Meteor.userId(),
       startDate: new Date(),
       goal: e.target.goal.value,
     };
