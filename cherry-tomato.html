@@ -18,6 +18,10 @@
 
 <template name="pomodorosList">
   <h2>Pomodoros</h2>
+  <form id="new-pomodoro">
+    <input type="text" name="goal" placeholder="Goal or name of the task"/>
+    <input type="submit" value="Start"/>
+  </form>
   <ul class="pomodoro-list">
     {{#each allPomodoros}}
       <li class="pomodoro">

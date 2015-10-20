@@ -22,6 +22,20 @@ if (Meteor.isClient) {
       return Pomodoros.find({}, {sort: {startDate: -1}});
     }
   });
+
+  Template.pomodorosList.events({
+    'submit #new-pomodoro' : function (e) {
+      e.preventDefault();
+
+      var pomodoro = {
+        startDate: new Date(),
+        goal: e.target.goal.value,
+      };
+
+      Pomodoros.insert(pomodoro);
+    },
+  });
+
 }
 
 if (Meteor.isServer) {
