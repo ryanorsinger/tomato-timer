@@ -25,6 +25,8 @@ describe('Templates', function () {
       });
 
       it("has a delete button", function() {
+        spyOn(Meteor, "user").and.returnValue({});
+
         spyOn(Template.pomodorosList.__helpers, " allPomodoros").and.callFake(function () {
           return [{startDate: new Date(), goal: "new goal"}];
         });
