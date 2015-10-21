@@ -1,0 +1,10 @@
+<template name="layout">
+  {{> loginButtons}}
+  <nav>
+    <a href="{{pathForHome}}">Home</a>
+    |
+    <a href="{{pathForAbout}}">About</a>
+  </nav>
+
+  {{>Template.dynamic template=content}}
+</template>
