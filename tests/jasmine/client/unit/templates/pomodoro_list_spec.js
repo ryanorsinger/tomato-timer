@@ -23,20 +23,6 @@ describe('Templates', function () {
 
         expect($view).toContainText("new goal");
       });
-
-      it("has a delete button", function() {
-        spyOn(Meteor, "user").and.returnValue({});
-
-        spyOn(Template.pomodorosList.__helpers, " allPomodoros").and.callFake(function () {
-          return [{startDate: new Date(), goal: "new goal"}];
-        });
-
-        this.container = document.createElement("DIV");
-        this.view = Blaze.renderWithData(Template.pomodorosList, {}, this.container);
-        var $view = $(this.container).find(".pomodoro-list");
-
-        expect($view).toContainElement('input.delete');
-      });
     });
 
   });

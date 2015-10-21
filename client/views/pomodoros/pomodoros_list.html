@@ -9,10 +9,7 @@
   <ul class="pomodoro-list">
     {{#each allPomodoros}}
       <li class="pomodoro">
-        {{startDate}} - {{goal}}
-        {{#if currentUser}}
-          <input type="button" value="Delete" class="delete"/>
-        {{/if}}
+        {{> pomodoroItem}}
       </li>
     {{else}}
       No completed Pomodoros yet
