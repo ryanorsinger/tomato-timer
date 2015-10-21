@@ -12,7 +12,9 @@ if (Meteor.isClient) {
 
       let userId = Meteor.userId();
 
-      return Poms.find({ owner: userId }, {sort: {startDate: -1}});
+      if(userId !== null) {
+        return Poms.find({ owner: userId }, {sort: {startDate: -1}});
+      }
     }
   });
 
