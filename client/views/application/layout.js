@@ -4,5 +4,9 @@ Template.layout.helpers({
     },
     pathForAbout: function () {
         return FlowRouter.path('/about');
-    }
+    },
+    pathForNew: function () {
+        return FlowRouter.path('/new');
+    },
+
 });
