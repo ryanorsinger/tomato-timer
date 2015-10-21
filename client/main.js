@@ -1,10 +1,18 @@
 if (Meteor.isClient) {
 
+  Accounts.ui.config({
+    passwordSignupFields: 'USERNAME_AND_EMAIL'
+  });
+
   Template.pomodorosList.helpers({
     allPomodoros: function () {
       // find().fetch() gets back the collection of objects
       // return Poms.find().fetch();
-      return Poms.find({}, {sort: {startDate: -1}});
+      // Poms.find({}, {sort: {startDate: -1}});
+
+      let userId = Meteor.userId();
+
+      return Poms.find({ owner: userId }, {sort: {startDate: -1}});
     }
   });
 
@@ -22,7 +30,8 @@ if (Meteor.isClient) {
 
       var pomodoro = {
         startDate: new Date(),
-        goal: e.target.goal.value
+        goal: e.target.goal.value,
+        owner: Meteor.userId(),
       };
 
       // Insert the new object into the Poms collection.
