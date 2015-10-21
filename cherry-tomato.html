@@ -1,14 +1,37 @@
 <head>
   <title>cherry-tomato</title>
+  <link rel="stylesheet" type="text/css" href="cherry-tomato.html">
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+    <nav>Navbar</nav>
 
-  {{> hello}}
+  <!-- template for inserting new Pomodoros -->
+  {{> pomodoroInput }}
+
+  <!-- insert templates with {{> myTemplateName }} -->
+  {{> pomodorosList }}
+
+
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="pomodorosList">
+    <h2>Pomodoros</h2>
+    <ul class="pomodoros-list">
+        {{#each allPomodoros }}
+            <li class="pomodoros">
+                {{ goal }} started at {{ startDate }}
+                <input type="submit" value="Delete">
+            </li>
+        {{ else }}
+            No completed Pomodoros yet
+        {{/each }}
+    </ul>
+</template>
+
+<template name="pomodoroInput">
+    <form id="new-pomodoro">
+        <input type="text" name="goal" placeholder="Goal or name of the task" autofocus/>
+        <input type="submit" value="Start" />
+    </form>
 </template>
