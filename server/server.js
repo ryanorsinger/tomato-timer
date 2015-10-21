@@ -1,8 +1,4 @@
-Poms.allow({
-  insert: function (userId, pomodoro) {
-      return pomodoro.owner === userId;
-  },
-  remove: function (userId, pomodoro) {
-      return pomodoro.owner === userId;
-  }
+// Publish the entire pomodoro collection
+Meteor.publish("pomodoros", function (){
+  return Poms.find({});
 });
