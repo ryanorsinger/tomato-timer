@@ -25,13 +25,9 @@ describe('Tasks', function () {
     });
 
     afterEach(function (done) {
-      _.each(Pomodoros.find().fetch(), function(pomodoro) {
+      _.each(Pomodoros.find().fetch(), function (pomodoro) {
         Pomodoros.remove(pomodoro._id);
       });
-      done();
-    });
-
-    afterEach(function (done) {
       Meteor.logout( function () {
         done();
       });

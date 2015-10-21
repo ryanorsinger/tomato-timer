@@ -1,4 +1,19 @@
-Pomodoros = new Mongo.Collection("Pomodoros", {});
+var pomodoro = {
+  endDate: function () {
+    var endDateMoment = moment(this.startDate).add(moment.duration(POMODORO_LENGTH, 'minutes'));
+    return endDateMoment.toDate();
+  },
+  remaining: function () {
+    return this.endDate().getTime() - Date.now();
+  },
+  done: function () {
+    return this.remaining() < 0;
+  },
+};
+
+Pomodoros = new Mongo.Collection("Pomodoros", {
+  transform: function (doc) { return _.extend(Object.create(pomodoro), doc); }
+});
 
 var ownsDocument = function(userId, doc) {
   return doc && doc.userId === userId;
@@ -21,6 +36,9 @@ Meteor.methods({
     console.log("Adding pomodoro:", pomodoro);
     
     var pomodoroId = Pomodoros.insert(pomodoro);
+    
+    // Find it again to get the transformed version so we can use remaining()
+    pomodoro = Pomodoros.findOne(pomodoroId);
 
     if (!this.isSimulation) {
       Meteor.setTimeout(function () {
@@ -28,7 +46,7 @@ Meteor.methods({
         if (Pomodoros.findOne(pomodoroId)) {
           console.log("Pomodoro ended:", pomodoro.goal);
         }
-      }, 25 * 60 * 1000);
+      }, pomodoro.remaining());
     }
   }
 });
