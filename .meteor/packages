@@ -24,3 +24,6 @@ accounts-facebook
 accounts-github
 kadira:flow-router
 kadira:blaze-layout
+sanjo:jasmine
+velocity:html-reporter
+momentjs:moment

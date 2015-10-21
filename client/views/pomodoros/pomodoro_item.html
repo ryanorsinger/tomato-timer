@@ -1,0 +1,15 @@
+<template name="pomodoroItem">
+  {{#if goal}}
+    {{goal}} -
+  {{/if}}
+
+  {{#if this.done}}
+    <span title="{{startDate}}">{{relativeStartDate}}</span>
+  {{else}}
+    <span class="countdown">{{formattedRemaining}}</span> remaining
+  {{/if}}
+
+  {{#if currentUser}}
+    <input type="button" value="Delete" class="delete"/>
+  {{/if}}
+</template>
