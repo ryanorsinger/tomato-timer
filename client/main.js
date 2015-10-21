@@ -1,8 +1,3 @@
-// Collection declaration. Notice that this is global.
-// Creates mongo collection on server
-// Creates a cache-like "minimongo" in memory on the client
-Poms = new Mongo.Collection('pomodoros', {});
-
 if (Meteor.isClient) {
 
   Template.pomodorosList.helpers({
@@ -30,15 +25,11 @@ if (Meteor.isClient) {
         goal: e.target.goal.value
       };
 
+      // Insert the new object into the Poms collection.
       Poms.insert(pomodoro);
 
+      // Reset the input field
       e.target.goal.value = '';
     },
-  });
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
   });
 }

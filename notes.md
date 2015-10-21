@@ -1,2 +1,0 @@
-
-Poms.find().fetch()

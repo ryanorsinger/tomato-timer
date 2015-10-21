@@ -20,3 +20,5 @@ ejson
 spacebars
 check
 ecmascript
+accounts-ui
+accounts-password

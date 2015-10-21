@@ -1,0 +1,13 @@
+<template name="pomodorosList">
+    <h2>Pomodoros</h2>
+    <ul class="pomodoros-list">
+        {{#each allPomodoros }}
+            <li class="pomodoros">
+                {{ goal }} started at {{ startDate }}
+                <input type="submit" value="Delete">
+            </li>
+        {{ else }}
+            No completed Pomodoros yet
+        {{/each }}
+    </ul>
+</template>
